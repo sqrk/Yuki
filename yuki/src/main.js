@@ -7,7 +7,7 @@ import jQuery from "jquery";
 window.$ = window.jQuery = jQuery;
 import "popper.js";
 import "bootstrap";
-import "./assets/styles.scss";
+import "./assets/css/styles.scss";
 
 Vue.config.productionTip = false;
 

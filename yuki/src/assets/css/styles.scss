@@ -1,0 +1,33 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "./variables";
+
+@font-face {
+  font-family: Baloo Tammudu;
+  src: url("../fonts/BalooTammudu-Regular.ttf") format("truetype");
+}
+
+html, body, #app, .homepage {
+  height: 100%;
+}
+
+button {
+  padding: 6px 25px;
+  border-radius: 12px;
+  font-family: Baloo Tammudu, sans-serif;
+  font-size: 22px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  border: none;
+  &.btn-primary {
+    background: $primary-color;
+  }
+  &.btn-primary:hover {
+    background: $primary-color-dark;
+  }
+  &.btn-secondary {
+    background: $secondary-color;
+  }
+  &.btn-secondary:hover {
+    background: $secondary-color-dark;
+  }
+}
