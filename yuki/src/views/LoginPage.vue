@@ -21,7 +21,7 @@
           required
         )
         br
-        button(type="submit") Login
+        button.btn-primary(type="submit") Login
 </template>
 
 <script>

@@ -11,7 +11,7 @@ import "./assets/css/styles.scss";
 
 Vue.config.productionTip = false;
 
-Vue.prototype.$isLoggedOut = true;
+Vue.prototype.$isLoggedOut = false;
 
 let app = "";
 
