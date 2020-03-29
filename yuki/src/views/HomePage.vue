@@ -5,11 +5,11 @@
       router-link(:to='{name: "login_path"}' tag="button").btn-primary Login
       br
       router-link(:to='{name: "register_path"}' tag="button").btn-secondary Register
-    .circle.a
-    .circle.b
-    .circle.c
-    .circle.d
-    .circle.e
+    img(src="../assets/img/a.png").a
+    img(src="../assets/img/b.png").b
+    img(src="../assets/img/c.png").c
+    img(src="../assets/img/d.png").d
+    img(src="../assets/img/e.png").e
 
 </template>
 
@@ -29,7 +29,10 @@ export default {
       margin-bottom: 30px;
     }
     .buttons {
-      margin-bottom: 80px;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      left: 50%;
     }
     button {
       width: 145px;
@@ -37,43 +40,27 @@ export default {
         margin-bottom: 15px;
       }
     }
-    .circle {
+    img {
       position: absolute;
-      border-radius: 50%;
       &.a {
-        width: 143px;
-        height: 143px;
         right: 85px;
-        bottom: -33px;
-        background: #C4DBF1;
+        bottom: 0;
       }
       &.b {
-        width: 83px;
-        height: 83px;
-        bottom: -16px;
-        right: -10px;
-        background: #5EA4E4;
+        bottom: 0;
+        right: 0;
       }
       &.c {
-        width: 67px;
-        height: 67px;
         bottom: 193px;
         right: 9px;
-        background: #5EA4E4;
       }
       &.d {
-        width: 52px;
-        height: 52px;
         bottom: 74px;
         right: 32px;
-        background: #E8F3FD;
       }
       &.e {
-        width: 30px;
-        height: 30px;
         bottom: 125px;
         right: 98px;
-        background: #3484CE;
       }
     }
   }

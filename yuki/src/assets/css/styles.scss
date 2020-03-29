@@ -21,13 +21,17 @@ button {
   &.btn-primary {
     background: $primary-color;
   }
-  &.btn-primary:hover {
-    background: $primary-color-dark;
+  &.btn-primary:hover, &.btn-primary:active, &.btn-primary:focus {
+    background: $primary-color-dark !important;
   }
   &.btn-secondary {
     background: $secondary-color;
   }
-  &.btn-secondary:hover {
-    background: $secondary-color-dark;
+  &.btn-secondary:hover, &.btn-secondary:active, &.btn-secondary:focus {
+    background: $secondary-color-dark !important;
   }
+}
+
+.center {
+  text-align: center;
 }
