@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import * as firebase from "firebase";
+// import * as firebase from "firebase";
 import HomePage from "../views/HomePage.vue";
 import LoginPage from "../views/LoginPage";
 import RegisterPage from "../views/RegisterPage";
@@ -45,9 +45,9 @@ const router = new VueRouter({
   routes
 });
 
-router.beforeEach((to, from, next) => {
+/*router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-  const currentUser = firebase.auth().currentUser;
+  // const currentUser = firebase.auth().currentUser;
 
   //Check if path requires auth and user not logged in
   if ( requiresAuth && !currentUser) {
@@ -55,6 +55,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
-});
+});*/
 
 export default router;

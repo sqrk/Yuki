@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import "./registerServiceWorker";
-import * as firebase from "firebase";
+//import * as firebase from "firebase";
 import router from "./router/router";
 import jQuery from "jquery";
 window.$ = window.jQuery = jQuery;
@@ -16,11 +16,11 @@ Vue.prototype.$isLoggedOut = false;
 let app = "";
 
 //Mount only the first time auth state changes
-firebase.auth().onAuthStateChanged(() => {
+//firebase.auth().onAuthStateChanged(() => {
   if(!app) {
     new Vue({
       router,
       render: h => h(App)
     }).$mount("#app");
   }
-});
+//});

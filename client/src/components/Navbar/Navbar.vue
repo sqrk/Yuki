@@ -1,6 +1,6 @@
 <template lang="pug">
   nav.navbar.navbar-expand-lg.navbar-light.bg-light
-    router-link(:to='{ name: "root_path" }').navbar-brand(href='#') Yuki
+    router-link(:to='{ name: "root_path" }').navbar-brand Yuki
     ul.navbar-nav.mr-auto
       li.nav-item
         router-link(:to='{ name: "feed_path" }').nav-link Feed

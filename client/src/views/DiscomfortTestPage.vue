@@ -94,13 +94,13 @@
 </template>
 
 <script>
-  import {fb, db} from "../firebase";
+  //import {fb, db} from "../../../server/src/firebase";
 
   export default {
     name: "TestPage",
     data () {
       return {
-        user: fb.auth().currentUser.uid,
+        //user: fb.auth().currentUser.uid,
         map: {
           strangers: null,
           bothering: null,
@@ -110,7 +110,7 @@
     },
     methods: {
       computeMap() {
-        db.collection("discomfortMaps").add({
+        /*db.collection("discomfortMaps").add({
           user: this.user,
           map: this.map
         })
@@ -119,7 +119,7 @@
           })
           .catch((error) => {
             console.error("Error adding document: ", error);
-          });
+          });*/
       }
     }
   }

@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import {fb} from "../firebase";
+//import {fb} from "../../../server/src/firebase";
 
 export default {
   name: "LoginPage",
@@ -39,13 +39,13 @@ export default {
 
   methods: {
     login(){
-      fb.auth().signInWithEmailAndPassword(this.email, this.password)
+      /*fb.auth().signInWithEmailAndPassword(this.email, this.password)
         .then(() => {
           this.$router.replace({ name: "feed_path" });
         })
         .catch(function(error) {
           alert(error.message);
-      });
+      });*/
     }
   }
 };

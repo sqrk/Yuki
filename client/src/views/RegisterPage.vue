@@ -7,7 +7,7 @@
           label(for="email") Email address:
           input.form-control#email(
             type="email"
-            v-model="user.email"
+            v-model="email"
             placeholder="abc@example.com"
             required
           )
@@ -16,7 +16,7 @@
           input.form-control#password(
             type="password"
             name="password"
-            v-model="user.password"
+            v-model="password"
             required
           )
         .form-group
@@ -31,65 +31,63 @@
           label(for="username") Username:
           input.form-control#username(
             type="text"
-            v-model="user.username"
+            v-model="username"
             placeholder=""
           )
+
+        .error(v-html="error")
         button(type="submit").btn-primary Register
 </template>
 
 <script>
 //TODO Add autocomplete to inputs, check confirm password
-import {fb, db} from '../firebase';
+import AuthenticationService from "../services/AuthenticationService";
+//import {fb, db} from '../../../server/src/firebase';
 
 export default {
   name: "RegisterPage",
   components: {},
   data() {
     return {
-      user: {
-        email: null,
-        password: null,
-        username: null,
-        score: 0,
-        hasPendingTestimonial: false
-      },
+      email: null,
+      password: null,
+      username: null,
       passwordConf: null,
+      error: null
     };
   },
 
   methods: {
-    register() {
-      fb.auth().createUserWithEmailAndPassword(this.user.email, this.user.password)
-        .then(() => {
-          this.saveData();
-          this.$router.replace({name: "discomfort_test_path"})
-        })
-        .catch(function(error) {
-          alert(error.message);
+    async register() {
+      try {
+        await AuthenticationService.register({
+          email: this.email,
+          password: this.password,
+          username: this.username
         });
+      } catch (error) {
+        this.error = error.response.data.error;
+      }
     },
     saveData() {
       //storing user in db
-      db.collection("users").add(this.user)
-        .then((docRef) => {
-          console.log("Document written with ID: ", docRef.id);
-        })
-        .catch((error) => {
-          console.error("Error adding document: ", error);
-        });
+      // this.$router.replace({name: "discomfort_test_path"});
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
-  form {
-    label {
-      display: block;
-    }
-    input {
-      margin: 0 auto;
-      width: 194px;
-    }
+form {
+  label {
+    display: block;
   }
+  input {
+    margin: 0 auto;
+    width: 194px;
+  }
+  .error {
+    color: red;
+  }
+}
 </style>
