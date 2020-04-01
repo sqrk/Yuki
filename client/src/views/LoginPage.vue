@@ -1,31 +1,30 @@
 <template lang="pug">
   .login-page.center
-    h1 Login
     .container
+      h1 Login
       form(@submit.prevent="login")
-        label(for="email") Email address:
-        br
-        input#email(
-          type="email"
-          v-model="email"
-          placeholder="abc@example.com"
-          required
-        )
-        br
-        label(for="password") Password:
-        br
-        input#password(
-          type="password"
-          name="password"
-          v-model="password"
-          required
-        )
-        br
+        .form-group
+          label(for="email") Email address:
+          input.form-control#email(
+            type="email"
+            v-model="email"
+            placeholder="abc@example.com"
+            required
+          )
+        .form-group
+          label(for="password") Password:
+          input.form-control#password(
+            type="password"
+            name="password"
+            v-model="password"
+            required
+          )
+        label.error {{ this.error }}
         button.btn-primary(type="submit") Login
 </template>
 
 <script>
-//import {fb} from "../../../server/src/firebase";
+import AuthenticationService from "../services/AuthenticationService";
 
 export default {
   name: "LoginPage",
@@ -33,19 +32,24 @@ export default {
   data() {
     return {
       email: null,
-      password: null
+      password: null,
+      user: null,
+      error: null
     };
   },
 
   methods: {
-    login(){
-      /*fb.auth().signInWithEmailAndPassword(this.email, this.password)
-        .then(() => {
-          this.$router.replace({ name: "feed_path" });
-        })
-        .catch(function(error) {
-          alert(error.message);
-      });*/
+    async login() {
+      try {
+        const response = await AuthenticationService.login({
+          email: this.email,
+          password: this.password //TODO is this ok????
+        });
+        await this.$store.dispatch("setLogged", true);
+        await this.$store.dispatch("setUser", response.data);
+      } catch (error) {
+        this.error = error.response.data.error;
+      }
     }
   }
 };

@@ -1,7 +1,7 @@
 <template lang="pug">
   .discomfort-test-page
     .container
-      h1.center Test Page
+      h1.center Discomfort Test Page
       h4 How comfortable are you with each of these situations?
       form(@submit.prevent="computeMap")
         .form-group
@@ -94,23 +94,23 @@
 </template>
 
 <script>
-  //import {fb, db} from "../../../server/src/firebase";
+//import {fb, db} from "../../../server/src/firebase";
 
-  export default {
-    name: "TestPage",
-    data () {
-      return {
-        //user: fb.auth().currentUser.uid,
-        map: {
-          strangers: null,
-          bothering: null,
-          presenting: null
-        }
+export default {
+  name: "TestPage",
+  data() {
+    return {
+      //user: fb.auth().currentUser.uid,
+      map: {
+        strangers: null,
+        bothering: null,
+        presenting: null
       }
-    },
-    methods: {
-      computeMap() {
-        /*db.collection("discomfortMaps").add({
+    };
+  },
+  methods: {
+    computeMap() {
+      /*db.collection("discomfortMaps").add({
           user: this.user,
           map: this.map
         })
@@ -120,17 +120,17 @@
           .catch((error) => {
             console.error("Error adding document: ", error);
           });*/
-      }
     }
   }
+};
 
-  //TODO Prevent access unless sign up
-  //TODO "automate" the test (no hardcoded questions)
-  //TODO radio values, numbers not strings
+//TODO Prevent access unless sign up
+//TODO "automate" the test (no hardcoded questions)
+//TODO radio values, numbers not strings
 </script>
 
 <style scoped lang="scss">
-  form button {
-    margin: 0 auto;
-  }
+form button {
+  margin: 0 auto;
+}
 </style>

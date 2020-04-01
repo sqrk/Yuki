@@ -1,7 +1,7 @@
 <template lang="pug">
   .register-page.center
-    h1 Register
-    .container.center
+    .container
+      h1 Register
       form(@submit.prevent="register")
         .form-group
           label(for="email") Email address:
@@ -34,15 +34,13 @@
             v-model="username"
             placeholder=""
           )
-
-        .error(v-html="error")
+        label.error {{ this.error }}
         button(type="submit").btn-primary Register
 </template>
 
 <script>
 //TODO Add autocomplete to inputs, check confirm password
 import AuthenticationService from "../services/AuthenticationService";
-//import {fb, db} from '../../../server/src/firebase';
 
 export default {
   name: "RegisterPage",
@@ -53,14 +51,19 @@ export default {
       password: null,
       username: null,
       passwordConf: null,
-      error: null
+      error: null,
+      user: null
     };
   },
 
   methods: {
     async register() {
       try {
-        await AuthenticationService.register({
+        if (this.password !== this.passwordConf) {
+          this.error = "Your passwords do not match.";
+          return;
+        }
+        this.user = await AuthenticationService.register({
           email: this.email,
           password: this.password,
           username: this.username
@@ -68,10 +71,6 @@ export default {
       } catch (error) {
         this.error = error.response.data.error;
       }
-    },
-    saveData() {
-      //storing user in db
-      // this.$router.replace({name: "discomfort_test_path"});
     }
   }
 };

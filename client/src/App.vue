@@ -1,6 +1,6 @@
 <template lang="pug">
   #app
-    Navbar#nav(v-if="this.$isLoggedOut")
+    Navbar#nav(v-if="isLogged")
     router-view
 </template>
 
@@ -11,6 +11,11 @@ export default {
   components: {
     Navbar
   },
+  data () {
+    return {
+      isLogged: this.$store.state.isLogged
+    }
+  }
 };
 </script>
 

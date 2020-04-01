@@ -4,26 +4,23 @@
 </template>
 
 <script>
-  //import * as firebase from 'firebase';
+import { fb } from "../../../server/src/firebase";
 
 export default {
   name: "ProfilePage",
   methods: {
     logout() {
-      /*firebase.auth().signOut()
+      fb.auth()
+        .signOut()
         .then(() => {
-          console.log("Profile", this.$isLoggedOut);
-          this.$isLoggedOut = true;
-          this.$router.replace({name: "root_path"})
+          this.$router.replace({ name: "root_path" });
         })
         .catch(err => {
           console.log(err);
-        })*/
+        });
     }
   }
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

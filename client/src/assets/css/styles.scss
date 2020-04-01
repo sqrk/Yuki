@@ -35,3 +35,15 @@ button {
 .center {
   text-align: center;
 }
+
+.register-page, .login-page {
+  form {
+    label {
+      display: block;
+    }
+    input {
+      margin: 0 auto;
+      width: 194px;
+    }
+  }
+}

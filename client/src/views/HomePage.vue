@@ -1,5 +1,5 @@
 <template lang="pug">
-  .homepage
+  .homepage.center
     label.brand Yuki
     .buttons
       router-link(:to='{name: "login_path"}' tag="button").btn-primary Login
@@ -20,48 +20,48 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-  .homepage {
-    background: linear-gradient(180deg, #FFD4BC 17.82%, #F3F9FF 72.53%);
-    padding: 50px 0;
-    .brand {
-      display: block;
-      font-size: 80px;
-      margin-bottom: 30px;
-    }
-    .buttons {
-      position: absolute;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      left: 50%;
-    }
-    button {
-      width: 145px;
-      &.btn-primary {
-        margin-bottom: 15px;
-      }
-    }
-    img {
-      position: absolute;
-      &.a {
-        right: 85px;
-        bottom: 0;
-      }
-      &.b {
-        bottom: 0;
-        right: 0;
-      }
-      &.c {
-        bottom: 193px;
-        right: 9px;
-      }
-      &.d {
-        bottom: 74px;
-        right: 32px;
-      }
-      &.e {
-        bottom: 125px;
-        right: 98px;
-      }
+.homepage {
+  background: linear-gradient(180deg, #ffd4bc 17.82%, #f3f9ff 72.53%);
+  padding: 50px 0;
+  .brand {
+    display: block;
+    font-size: 80px;
+    margin-bottom: 30px;
+  }
+  .buttons {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+  }
+  button {
+    width: 145px;
+    &.btn-primary {
+      margin-bottom: 15px;
     }
   }
+  img {
+    position: absolute;
+    &.a {
+      right: 85px;
+      bottom: 0;
+    }
+    &.b {
+      bottom: 0;
+      right: 0;
+    }
+    &.c {
+      bottom: 193px;
+      right: 9px;
+    }
+    &.d {
+      bottom: 74px;
+      right: 32px;
+    }
+    &.e {
+      bottom: 125px;
+      right: 98px;
+    }
+  }
+}
 </style>
