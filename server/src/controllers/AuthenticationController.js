@@ -95,4 +95,14 @@ module.exports = {
         }
       });
   },
+
+  logout(req, res) {
+    fb.auth()
+      .signOut()
+      .catch((error) => {
+        res.status(502).send({
+          error: `Something went wrong: ${error}`,
+        });
+      });
+  },
 };

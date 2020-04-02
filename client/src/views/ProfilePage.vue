@@ -1,23 +1,31 @@
 <template lang="pug">
   .profile-page
+    | Username: {{ $store.state.user.username }}
+    | Email: {{ $store.state.user.email }}
     button.btn-danger(@click="logout") Logout
+    .error {{ this.error }}
 </template>
 
 <script>
-import { fb } from "../../../server/src/firebase";
+import AuthenticationService from "../services/AuthenticationService";
 
 export default {
   name: "ProfilePage",
+  data() {
+    return {
+      error: null,
+    };
+  },
   methods: {
-    logout() {
-      fb.auth()
-        .signOut()
-        .then(() => {
-          this.$router.replace({ name: "root_path" });
-        })
-        .catch(err => {
-          console.log(err);
-        });
+    async logout() {
+      try {
+        await AuthenticationService.logout();
+        await this.$store.dispatch("setUser", null);
+        await this.$store.dispatch("setLogged", false);
+        await this.$router.push({ name: "root_path" });
+      } catch (error) {
+        this.error = error.message;
+      }
     }
   }
 };

@@ -1,6 +1,6 @@
 <template lang="pug">
   #app
-    Navbar#nav(v-if="isLogged")
+    Navbar#nav(v-if="this.$store.state.isLogged")
     router-view
 </template>
 
@@ -13,7 +13,7 @@ export default {
   },
   data () {
     return {
-      isLogged: this.$store.state.isLogged
+
     }
   }
 };
