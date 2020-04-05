@@ -1,0 +1,50 @@
+[debug] [2020-04-05T19:40:31.181Z] ----------------------------------------------------------------------
+[debug] [2020-04-05T19:40:31.183Z] Command:       /usr/local/Cellar/node/12.12.0/bin/node /usr/local/bin/firebase serve --only functions
+[debug] [2020-04-05T19:40:31.183Z] CLI Version:   7.13.1
+[debug] [2020-04-05T19:40:31.184Z] Platform:      darwin
+[debug] [2020-04-05T19:40:31.184Z] Node Version:  v12.12.0
+[debug] [2020-04-05T19:40:31.185Z] Time:          Sun Apr 05 2020 20:40:31 GMT+0100 (GMT+01:00)
+[debug] [2020-04-05T19:40:31.185Z] ----------------------------------------------------------------------
+[debug] [2020-04-05T19:40:31.185Z] 
+[debug] [2020-04-05T19:40:31.196Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-05T19:40:31.196Z] > authorizing via signed-in user
+[debug] [2020-04-05T19:40:31.196Z] [iam] checking project yuki-a30e7 for permissions ["firebase.projects.get"]
+[debug] [2020-04-05T19:40:31.198Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/yuki-a30e7:testIamPermissions  
+
+[debug] [2020-04-05T19:40:32.484Z] <<< HTTP RESPONSE 200
+[debug] [2020-04-05T19:40:32.486Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/yuki-a30e7  
+ 
+[debug] [2020-04-05T19:40:34.264Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Using node@12 from host.
+[info] ✔  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "/Users/mac/WebstormProjects/Yuki/yuki/server/functions" for Cloud Functions...
+[debug] [2020-04-05T19:40:34.303Z] [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-04-05T19:40:34.304Z] [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2020-04-05T19:40:34.305Z] [worker-pool] submitWork(triggerId=)
+[debug] [2020-04-05T19:40:34.307Z] [worker-~diagnostic~-f9aac2b3-dc6b-42e1-afae-140108bfe7e5]: Assigning socketPath: /var/folders/x9/2yssk4l57js1t30svhrx9bbw0000gq/T/fire_emu_31747.sock
+[debug] [2020-04-05T19:40:34.308Z] [worker-~diagnostic~-f9aac2b3-dc6b-42e1-afae-140108bfe7e5]: BUSY
+[debug] [2020-04-05T19:40:35.011Z] [runtime-status] [31747] Functions runtime initialized. {"cwd":"/Users/mac/WebstormProjects/Yuki/yuki/server/functions","node_version":"12.12.0"}
+[debug] [2020-04-05T19:40:35.014Z] [runtime-status] [31747] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-04-05T19:40:35.023Z] [runtime-status] [31747] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/mac/WebstormProjects/Yuki/yuki/server/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2020-04-05T19:40:35.025Z] [runtime-status] [31747] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/mac/WebstormProjects/Yuki/yuki/server/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/mac/WebstormProjects/Yuki/yuki/server/service-account/yuki-a30e7-3ec5c83351a5.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-05T19:40:35.026Z] [runtime-status] [31747] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/mac/WebstormProjects/Yuki/yuki/server/functions/node_modules/firebase-functions/lib/index.js"}
+[info] ✔  functions[api]: http function initialized (http://localhost:5000/yuki-a30e7/us-central1/api).
+[debug] [2020-04-05T19:40:35.834Z] [worker-~diagnostic~-f9aac2b3-dc6b-42e1-afae-140108bfe7e5]: IDLE
+[debug] [2020-04-05T19:41:48.740Z] File /Users/mac/WebstormProjects/Yuki/yuki/server/functions/routes.js changed, reloading triggers
+[debug] [2020-04-05T19:41:49.744Z] [worker-pool] Shutting down IDLE worker (~diagnostic~)
+[debug] [2020-04-05T19:41:49.744Z] [worker-~diagnostic~-f9aac2b3-dc6b-42e1-afae-140108bfe7e5]: FINISHING
+[debug] [2020-04-05T19:41:49.764Z] [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-04-05T19:41:49.764Z] [worker-pool] Adding worker with key ~diagnostic~, total=2
+[debug] [2020-04-05T19:41:49.764Z] [worker-pool] submitWork(triggerId=)
+[debug] [2020-04-05T19:41:49.765Z] [worker-~diagnostic~-596ba6cb-0807-4561-ab8f-9332d76676c9]: Assigning socketPath: /var/folders/x9/2yssk4l57js1t30svhrx9bbw0000gq/T/fire_emu_31767.sock
+[debug] [2020-04-05T19:41:49.765Z] [worker-~diagnostic~-596ba6cb-0807-4561-ab8f-9332d76676c9]: BUSY
+[debug] [2020-04-05T19:41:49.767Z] [worker-~diagnostic~-f9aac2b3-dc6b-42e1-afae-140108bfe7e5]: exited
+[debug] [2020-04-05T19:41:49.767Z] [worker-~diagnostic~-f9aac2b3-dc6b-42e1-afae-140108bfe7e5]: FINISHED
+[debug] [2020-04-05T19:41:50.405Z] [runtime-status] [31767] Functions runtime initialized. {"cwd":"/Users/mac/WebstormProjects/Yuki/yuki/server/functions","node_version":"12.12.0"}
+[debug] [2020-04-05T19:41:50.407Z] [runtime-status] [31767] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-04-05T19:41:50.409Z] [runtime-status] [31767] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/mac/WebstormProjects/Yuki/yuki/server/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2020-04-05T19:41:50.411Z] [runtime-status] [31767] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/mac/WebstormProjects/Yuki/yuki/server/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/mac/WebstormProjects/Yuki/yuki/server/service-account/yuki-a30e7-3ec5c83351a5.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-05T19:41:50.412Z] [runtime-status] [31767] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/mac/WebstormProjects/Yuki/yuki/server/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2020-04-05T19:41:51.062Z] [worker-~diagnostic~-596ba6cb-0807-4561-ab8f-9332d76676c9]: IDLE
