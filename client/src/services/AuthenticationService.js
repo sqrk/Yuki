@@ -8,6 +8,6 @@ export default {
     return Api().post("login", credentials);
   },
   logout() {
-    return Api().post("profile/logout");
+    return Api().post("logout");
   }
 };

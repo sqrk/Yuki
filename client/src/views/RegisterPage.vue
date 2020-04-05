@@ -71,7 +71,7 @@ export default {
 
         await this.$store.dispatch("setLogged", true);
         await this.$store.dispatch("setUser", response.data);
-        await this.$router.push({ name: "profile_path" });
+        await this.$router.push({ name: "discomfort_test_path" });
       } catch (error) {
         this.error = error.response.data.error;
       }

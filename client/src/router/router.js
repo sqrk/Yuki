@@ -26,7 +26,7 @@ Vue.use(VueRouter);
     component: RegisterPage
   },
   {
-    path: "/discomfort",
+    path: "/discomfort-test",
     name: "discomfort_test_path",
     component: DiscomfortTestPage,
     meta: { requiresAuth: true }
