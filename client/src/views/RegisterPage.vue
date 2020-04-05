@@ -63,11 +63,15 @@ export default {
           this.error = "Your passwords do not match.";
           return;
         }
-        this.user = await AuthenticationService.register({
+        const response = await AuthenticationService.register({
           email: this.email,
           password: this.password,
           username: this.username
         });
+
+        await this.$store.dispatch("setLogged", true);
+        await this.$store.dispatch("setUser", response.data);
+        await this.$router.push({ name: "profile_path" });
       } catch (error) {
         this.error = error.response.data.error;
       }

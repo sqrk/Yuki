@@ -45,6 +45,7 @@ export default {
           email: this.email,
           password: this.password //TODO is this ok????
         });
+
         await this.$store.dispatch("setLogged", true);
         await this.$store.dispatch("setUser", response.data);
         await this.$router.push({ name: "profile_path" });
@@ -58,4 +59,8 @@ export default {
 //TODO Implement errors (UI)
 </script>
 
-<style scoped></style>
+<style scoped>
+  .error {
+    color: red;
+  }
+</style>
