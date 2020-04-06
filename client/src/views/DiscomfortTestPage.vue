@@ -12,7 +12,7 @@
                 input#strangers1.custom-control-input(
                   type='radio',
                   value = 1,
-                  v-model = "map.strangers",
+                  v-model = "map.types.strangers",
                   name='strangers')
                 label.custom-control-label(for='strangers1') Easy
             .col-4
@@ -20,7 +20,7 @@
                 input#strangers2.custom-control-input(
                   type='radio',
                   value = 2,
-                  v-model = "map.strangers",
+                  v-model = "map.types.strangers",
                   name='strangers')
                 label.custom-control-label(for='strangers2') Tricky
             .col-4
@@ -28,7 +28,7 @@
                 input#strangers3.custom-control-input(
                   type='radio',
                   value = 3,
-                  v-model = "map.strangers",
+                  v-model = "map.types.strangers",
                   name='strangers')
                 label.custom-control-label(for='strangers3') Hard
 
@@ -40,7 +40,7 @@
                 input#bothering1.custom-control-input(
                   type='radio',
                   value = 1,
-                  v-model = "map.bothering",
+                  v-model = "map.types.bothering",
                   name='bothering')
                 label.custom-control-label(for='bothering1') Easy
             .col-4
@@ -48,7 +48,7 @@
                 input#bothering2.custom-control-input(
                   type='radio',
                   value = 2,
-                  v-model = "map.bothering",
+                  v-model = "map.types.bothering",
                   name='bothering')
                 label.custom-control-label(for='bothering2') Tricky
             .col-4
@@ -56,7 +56,7 @@
                 input#bothering3.custom-control-input(
                   type='radio',
                   value = 3,
-                  v-model = "map.bothering",
+                  v-model = "map.types.bothering",
                   name='bothering')
                 label.custom-control-label(for='bothering3') Hard
 
@@ -68,7 +68,7 @@
                 input#presenting1.custom-control-input(
                   type='radio',
                   value = 1,
-                  v-model = "map.presenting",
+                  v-model = "map.types.presenting",
                   name='presenting')
                 label.custom-control-label(for='presenting1') Easy
             .col-4
@@ -76,7 +76,7 @@
                 input#presenting2.custom-control-input(
                   type='radio',
                   :value = 2,
-                  v-model = "map.presenting",
+                  v-model = "map.types.presenting",
                   name='presenting')
                 label.custom-control-label(for='presenting2') Tricky
             .col-4
@@ -84,17 +84,18 @@
                 input#presenting3.custom-control-input(
                   type='radio',
                   value = 3,
-                  v-model = "map.presenting",
+                  v-model = "map.types.presenting",
                   name='presenting')
                 label.custom-control-label(for='presenting3') Hard
 
+        .error {{ this.error }}
         .row
           button.btn-primary(type="submit") Done
 
 </template>
 
 <script>
-//import {fb, db} from "../../../server/src/firebase";
+import DiscomfortTestService from "../services/DiscomfortTestService";
 
 export default {
   name: "TestPage",
@@ -102,14 +103,25 @@ export default {
     return {
       //user: fb.auth().currentUser.uid,
       map: {
-        strangers: null,
-        bothering: null,
-        presenting: null
-      }
+        uid: this.$store.state.user.uid,
+        types: {
+          strangers: null,
+          bothering: null,
+          presenting: null
+        }
+      },
+      error: null
     };
   },
   methods: {
-    computeMap() {
+    async computeMap() {
+      try {
+        const challengePath = await DiscomfortTestService.computeMap(this.map);
+
+        console.log(challengePath);
+      } catch (error) {
+        this.error = error;
+      }
       /*db.collection("discomfortMaps").add({
           user: this.user,
           map: this.map
@@ -132,5 +144,8 @@ export default {
 <style scoped lang="scss">
 form button {
   margin: 0 auto;
+}
+.error {
+  color: red;
 }
 </style>

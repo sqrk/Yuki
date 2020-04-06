@@ -106,7 +106,7 @@ module.exports = {
     }
   },
 
-  async logout(req, res) {
+  async logout(req, res) { // TODO Fix
     try {
       await fb.auth().signOut();
 

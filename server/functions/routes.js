@@ -1,5 +1,6 @@
 const AuthenticationController = require('./controllers/AuthenticationController');
 //const ChallengesController = require('./controllers/ChallengesController');
+const DiscomfortTestController = require('./controllers/DiscomfortTestController');
 const { isAuthenticated } = require('./auth/authenticated');
 const { isAuthorized } = require('./auth/authorized');
 
@@ -9,7 +10,11 @@ module.exports = {
     app.post('/login', AuthenticationController.login);
     app.post('/logout', AuthenticationController.logout);
 
-    app.get('/discomfort-test', isAuthenticated);
+    app.post('/discomfort-test',
+      //isAuthenticated,
+      //isAuthorized({ allowSameUser: true }),
+      DiscomfortTestController.computeMap
+    );
    // app.post('/discomfort-test', isAuthenticated, TestController)
 
     app.get('/profile', isAuthenticated);

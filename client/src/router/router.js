@@ -9,7 +9,7 @@ import ProfilePage from "../views/ProfilePage";
 
 Vue.use(VueRouter);
 
- const routes = [
+const routes = [
   {
     path: "/",
     name: "root_path",
