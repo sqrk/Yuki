@@ -13,43 +13,51 @@ module.exports = {
 
       try {
         // Get challenges from db
-        let challengePath = {};
+        let path = {};
         const querySnapshot = await admin.firestore()
           .collection("challenges")
           .get();
 
         // Return 404 error if no challenges were found.
-        if ( querySnapshot.empty ) {
+        if (querySnapshot.empty) {
           return res.status(404).send({
             error: "No challenges available"
           })
         }
 
+        // Initialize variable for the smallest difficulty we should start with
+        let minDifficulty = 0;
+
         querySnapshot.forEach(doc => {
-          //console.log(doc.data());
           const challenge = doc.data();
-          let maxDifficulty = 0;
+          let maxDiscomfort = 0;
           challenge.types.forEach((type) => {
-            maxDifficulty = Math.max(map.types[type], maxDifficulty);
+            maxDiscomfort = Math.max(map.types[type], maxDiscomfort);
           });
 
-          const totalDifficulty = challenge.difficulty + maxDifficulty;
+          const totalDifficulty = challenge.difficulty + maxDiscomfort;
 
-          if ( totalDifficulty in challengePath) {
-            challengePath[totalDifficulty].push(challenge.id);
+          // A difficulty can never be 0, if found it means it's not set yet
+          minDifficulty = minDifficulty === 0 ? totalDifficulty : Math.min(minDifficulty, totalDifficulty);
+
+          if (totalDifficulty in path) {
+            path[totalDifficulty].challenges.push(challenge.id);
           } else {
-            challengePath[totalDifficulty] = [challenge.id];
+            path[totalDifficulty] = {
+              challenges: [challenge.id],
+              completed: 0
+            };
           }
         });
 
-        // TODO store object in db
         try {
           await admin.firestore()
-            .collection('challengePath')
+            .collection('challengePaths')
             .doc(map.uid)
             .set({
               uid: map.uid,
-              challengePath: challengePath
+              currentDifficulty: minDifficulty,
+              path: path
             })
         } catch (error) {
           console.log("Failed to store challenge path in db ");
@@ -58,8 +66,7 @@ module.exports = {
           })
         }
 
-        return res.status(200).send(challengePath);
-
+        return res.status(200).send(path);
       } catch (error) {
         console.log("Failed to fetch challenges from db ");
         return res.status(502).send({
@@ -76,3 +83,5 @@ module.exports = {
 
   }
 };
+
+// TODO Prevent from taking test more than once (just check if corresponding challengePath exists already)

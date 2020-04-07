@@ -9,29 +9,34 @@ const vuexLocal = new VuexPersistence({
 });
 
 export default new Vuex.Store({
-  strict: true, // can't change the state unless through action/mutation
+  strict: true, // Can't change the state unless through action/mutation
   state: {
     user: null,
-    isLogged: false
+    isLogged: false,
+    challengePath: null,
   },
   plugins: [vuexLocal.plugin],
   mutations: {
-    // same name as action but gets param from action and updates state
     setLogged(state, isLogged) {
       state.isLogged = isLogged;
     },
 
     setUser(state, user) {
       state.user = user;
+    },
+    setChallengePath(state, challengePath) {
+      state.challengePath = challengePath;
     }
   },
   actions: {
-    // async, commits by calling mutation?
     setLogged({ commit }, isLogged) {
       commit("setLogged", isLogged);
     },
     setUser({ commit }, user) {
       commit("setUser", user);
+    },
+    setChallengePath({ commit }, challengePath) {
+      commit('setChallengePath', challengePath);
     }
   }
 });

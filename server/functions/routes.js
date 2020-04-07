@@ -3,6 +3,7 @@ const AuthenticationController = require('./controllers/AuthenticationController
 const DiscomfortTestController = require('./controllers/DiscomfortTestController');
 const { isAuthenticated } = require('./auth/authenticated');
 const { isAuthorized } = require('./auth/authorized');
+const FeedController = require('./controllers/FeedController');
 
 module.exports = {
   routes(app) {
@@ -16,6 +17,8 @@ module.exports = {
       DiscomfortTestController.computeMap
     );
    // app.post('/discomfort-test', isAuthenticated, TestController)
+
+    app.post('/challenges', FeedController.fetch);
 
     app.get('/profile', isAuthenticated);
 

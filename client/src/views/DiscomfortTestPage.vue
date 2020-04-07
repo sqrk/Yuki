@@ -101,7 +101,6 @@ export default {
   name: "TestPage",
   data() {
     return {
-      //user: fb.auth().currentUser.uid,
       map: {
         uid: this.$store.state.user.uid,
         types: {
@@ -117,28 +116,18 @@ export default {
     async computeMap() {
       try {
         const challengePath = await DiscomfortTestService.computeMap(this.map);
-
-        console.log(challengePath);
+        await this.$store.dispatch("setChallengePath", challengePath); // TODO Probably not needed and better not put in store
+        await this.$router.push({ name: "feed_path" });
       } catch (error) {
         this.error = error;
       }
-      /*db.collection("discomfortMaps").add({
-          user: this.user,
-          map: this.map
-        })
-          .then((docRef) => {
-            console.log("Document written with ID: ", docRef.id);
-          })
-          .catch((error) => {
-            console.error("Error adding document: ", error);
-          });*/
     }
   }
 };
 
-//TODO Prevent access unless sign up
-//TODO "automate" the test (no hardcoded questions)
-//TODO radio values, numbers not strings
+// TODO Prevent access unless sign up
+// TODO "automate" the test (no hardcoded questions)
+// TODO radio values, numbers not strings
 </script>
 
 <style scoped lang="scss">

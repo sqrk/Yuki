@@ -1,11 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import * as firebase from "firebase";
 import HomePage from "../views/HomePage.vue";
 import LoginPage from "../views/LoginPage";
 import RegisterPage from "../views/RegisterPage";
 import DiscomfortTestPage from "../views/DiscomfortTestPage";
 import ProfilePage from "../views/ProfilePage";
+import FeedPage from "../views/FeedPage";
 
 Vue.use(VueRouter);
 
@@ -36,6 +36,12 @@ const routes = [
     name: "profile_path",
     component: ProfilePage,
     meta: { requiresAuth: true }
+  },
+  {
+    path: "/feed",
+    name: "feed_path",
+    component: FeedPage,
+    meta: { requiresAuth: true }
   }
 ];
 
@@ -45,6 +51,7 @@ const router = new VueRouter({
   routes
 });
 
+// TODO implement this
 /*router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
   // const currentUser = firebase.auth().currentUser;
