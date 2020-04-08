@@ -41,6 +41,7 @@ module.exports = {
         score: 0,
         pendingTestimonial: false,
         activeChallenge: null,
+        completedChallenges: [],
         uid: uid,
       };
 
@@ -106,7 +107,7 @@ module.exports = {
     }
   },
 
-  async logout(req, res) {
+  async logout(req, res) { // TODO Fix
     try {
       await fb.auth().signOut();
 

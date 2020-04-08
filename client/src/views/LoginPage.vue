@@ -60,7 +60,7 @@ export default {
 </script>
 
 <style scoped>
-  .error {
-    color: red;
-  }
+.error {
+  color: red;
+}
 </style>
