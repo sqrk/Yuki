@@ -41,6 +41,7 @@ module.exports = {
         score: 0,
         pendingTestimonial: false,
         activeChallenge: null,
+        completedChallenges: [],
         uid: uid,
       };
 

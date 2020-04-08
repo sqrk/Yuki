@@ -26,6 +26,9 @@ export default new Vuex.Store({
     },
     setChallengePath(state, challengePath) {
       state.challengePath = challengePath;
+    },
+    setActiveChallenge(state, activeChallenge) {
+      state.user.activeChallenge = activeChallenge;
     }
   },
   actions: {
@@ -37,6 +40,9 @@ export default new Vuex.Store({
     },
     setChallengePath({ commit }, challengePath) {
       commit('setChallengePath', challengePath);
+    },
+    setActiveChallenge({ commit }, activeChallenge) {
+      commit('setActiveChallenge', activeChallenge);
     }
   }
 });
