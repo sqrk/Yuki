@@ -1,10 +1,10 @@
 <template lang="pug">
-  .feed-page
+  .feed-page.page
     .container
 
       <!--Shows if no challenges are active-->
       .challenges(v-if="!this.activeChallengeID")
-        .challenge(v-for="challenge in this.challenges" :key="challenge.id")
+        .challenge(v-for="challenge in this.challenges" :key="challenge.id") <!--TODO Change to uid -->
           .title {{ challenge.title}}
           .description {{ challenge.description }}
           //label.error {{ this.error }} <!--TODO Fix -->
@@ -16,12 +16,21 @@
         .challenge
           .title {{ this.activeChallengeData.title }}
           .description {{ this.activeChallengeData.description }}
+          .button.btn-primary Complete
+          .button.btn-danger Drop
         .testimonials
           .testimonial(v-for="testimonial in this.testimonials" :key ="testimonial.uid") <!--TODO Sorting?-->
-            .author {{ testimonial.author }}
+            .author {{ testimonial.user }}
             .date {{ testimonial.date }} <!--TODO Format-->
             .score {{ testimonial.score }}
             .content {{ testimonial.content }}
+            .comments
+              .comment(v-for="comment in testimonial.comments" :key="comment.uid")
+                .author {{ comment.user }}
+                .date {{ comment.date }} <!--TODO Format-->
+                .score {{ comment.score }}
+                .content {{ comment.content }}
+
 
 </template>
 
@@ -54,10 +63,11 @@ export default {
         this.challenges = response.data;
       } else {
         const response = await TestimonialService.fetch(this.activeChallengeID);
-        console.log(response);
 
         this.activeChallengeData = response.data.challenge;
         this.testimonials = response.data.testimonials;
+        console.log(response.data.testimonials);
+
       }
     },
 

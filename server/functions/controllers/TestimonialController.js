@@ -17,17 +17,22 @@ module.exports = {
         }
 
         data.challenge = challengeDoc.data();
-        console.log(data);
-
         data.testimonials = [];
-        admin.firestore().collection('testimonials').where('challenge', "==", id).get()
-          .then(querySnapshot => {
-            querySnapshot.forEach(testimonialDoc => {
+
+        // Getting all testimonials for this challenge
+        admin.firestore().collection('testimonials')
+          .where('challenge', "==", id)
+          .get()
+          .then(testimonialSnapshot => {
+            testimonialSnapshot.forEach(testimonialDoc => {
               data.testimonials.push(testimonialDoc.data());
             });
-            console.log(data);
-            return res.status(200).send(data);
 
+
+            // TODO try for no comment found
+
+            //console.log(data);
+            return res.status(200).send(data);
           })
           .catch(error => {
             console.log('Failed to fetch testimonials:', error.message);
