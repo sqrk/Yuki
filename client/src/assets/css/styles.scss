@@ -35,6 +35,9 @@ button {
 .center {
   text-align: center;
 }
+.right {
+  text-align: right;
+}
 
 .register-page, .login-page {
   form {
@@ -45,5 +48,37 @@ button {
       margin: 0 auto;
       width: 194px;
     }
+  }
+}
+
+.container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  border-color: $primary-color;
+  background-color: $primary-color;
+}
+
+.page {
+  height: calc(100% + -68px);
+  position: relative;
+  h1 {
+    margin-top: 15px;
+    margin-bottom: 30px;
+  }
+}
+
+.flt-r {
+  float: right
+}
+.flt-l {
+  float: left;
+}
+
+i {
+  &.fas, &.far {
+    font-weight: bold;
   }
 }

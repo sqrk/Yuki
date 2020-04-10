@@ -25,7 +25,24 @@ module.exports = {
           .get()
           .then(testimonialSnapshot => {
             testimonialSnapshot.forEach(testimonialDoc => {
-              data.testimonials.push(testimonialDoc.data());
+              let testimonial = testimonialDoc.data();
+              let date = testimonial.date.toDate();
+
+              let strDate = date.getHours().toString().padStart(2, "0") + ':' + date.getMinutes().toString().padStart(2, "0") + '  ' + date.getDay()
+                + '/' + date.getMonth() + '/' + date.getFullYear();
+
+              testimonial.date = strDate;
+
+              testimonial.comments.forEach(comment => {
+                date = comment.date.toDate();
+
+                strDate = date.getHours().toString().padStart(2, "0") + ':' + date.getMinutes().toString().padStart(2, "0") + '  ' + date.getDay()
+                  + '/' + date.getMonth() + '/' + date.getFullYear();
+
+                comment.date = strDate;
+              });
+
+              data.testimonials.push(testimonial);
             });
 
 

@@ -51,7 +51,7 @@ module.exports = {
                 }
               })
               .catch((error) => {
-                console.log('Failed to fetch challenges from db: ', error.message);
+                console.log('ChallengeController: Failed to fetch challenges from db: ', error.message);
                 return res.status(502).send({
                   error: 'Something wrong happened with our servers.',
                 })

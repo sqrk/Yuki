@@ -1,13 +1,15 @@
 <template lang="pug">
-  nav.navbar.navbar-expand-lg.navbar-light.bg-light
-    router-link(:to='{ name: "root_path" }').navbar-brand Yuki
-    ul.navbar-nav.mr-auto
+  nav.navbar.navbar-expand-lg
+    ul.navbar-nav
       li.nav-item
-        router-link(:to='{ name: "feed_path" }').nav-link Feed
+        router-link(:to='{ name: "feed_path" }').nav-link
+          i.fas.fa-stream
       li.nav-item
-        router-link(:to='{ name: "register_path" }').nav-link More Help
+        router-link(:to='{ name: "register_path" }').nav-link
+          i.far.fa-life-ring
       li.nav-item
-        router-link(:to='{ name: "profile_path" }').nav-link Profile
+        router-link(:to='{ name: "profile_path" }').nav-link
+          i.fas.fa-user-circle
 </template>
 
 <script>
@@ -16,4 +18,22 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@import "../../assets/css/variables";
+
+nav {
+  background: $secondary-color;
+  ul {
+    display: contents;
+  }
+  .nav-link {
+    color: white;
+    i {
+      font-size: 34px;
+      &.fa-stream {
+        font-size: 30px;
+      }
+    }
+  }
+}
+</style>
