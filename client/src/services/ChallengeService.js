@@ -6,5 +6,8 @@ export default {
   },
   take(id, uid) {
     return Api().post("challenges/take", { id, uid });
-  }
+  },
+  drop(user) {
+    return Api().post("challenges/drop", { user } ); //TODO Fix url
+  },
 };

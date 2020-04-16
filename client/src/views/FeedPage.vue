@@ -24,7 +24,7 @@
             h4.title.card-title {{ activeChallengeData.title }}
             .description.card-text {{ activeChallengeData.description }}
             button.button.btn-primary.inline(data-toggle="modal" data-target="#complete") Complete
-            button.button.btn-danger.inline Drop
+            button.button.btn-danger.inline(@click="drop") Drop
         .testimonials
           h4.title Testimonials
           .testimonials-not-available(v-if="testimonials.length === 0")
@@ -142,6 +142,7 @@ export default {
             this.newTestimonial
           );
           this.activeChallengeID = "";
+          this.activeChallengeData = "";
           await $('#complete').modal('hide');
           await this.fetch();
           await this.$store.dispatch("setActiveChallenge", "");
@@ -149,6 +150,19 @@ export default {
         }
       } catch (error) {
         this.error = error.response.data.error;
+      }
+    },
+
+    async drop() {
+      try {
+        await ChallengeService.drop(this.uid);
+        this.activeChallengeID = "";
+        this.activeChallengeData = "";
+        await this.$store.dispatch("setActiveChallenge", "");
+        await this.fetch();
+
+      } catch (error) {
+        this.error = error;
       }
     },
 
