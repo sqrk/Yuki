@@ -21,6 +21,7 @@ module.exports = {
 
     app.post('/challenges/fetch', ChallengeController.fetch);
     app.post('/challenges/take', ChallengeController.take);
+    app.post('/challenges/drop', ChallengeController.drop);
 
     app.get('/testimonials/:id', TestimonialService.fetch);
     app.post('/testimonials/new', TestimonialService.complete);

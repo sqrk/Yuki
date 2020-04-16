@@ -101,5 +101,26 @@ module.exports = {
         error: "Something wrong happened with our servers."
       })
     }
+  },
+
+  async drop(req, res) {
+    const { user } = req.body;
+
+    admin.firestore()
+      .collection('users')
+      .doc(user)
+      .update({
+        activeChallenge: ""
+      })
+      .then(() => {
+        return res.sendStatus(200);
+      })
+      .catch(error => {
+        console.log("ChallengeController: failed to update activeChallenge:", error.message);
+        return res.status(502).send({
+          error: "Something wrong happened with our servers."
+        })
+      })
+
   }
 };

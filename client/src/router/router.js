@@ -6,6 +6,7 @@ import RegisterPage from "../views/RegisterPage";
 import DiscomfortTestPage from "../views/DiscomfortTestPage";
 import ProfilePage from "../views/ProfilePage";
 import FeedPage from "../views/FeedPage";
+import MoreHelpPage from "../views/MoreHelpPage";
 
 Vue.use(VueRouter);
 
@@ -41,6 +42,12 @@ const routes = [
     path: "/feed",
     name: "feed_path",
     component: FeedPage,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: "/more-help",
+    name: "more_help_path",
+    component: MoreHelpPage,
     meta: { requiresAuth: true }
   }
 ];
