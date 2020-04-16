@@ -20,20 +20,27 @@ button {
   border: none;
   &.btn-primary {
     background: $primary-color;
+    border-color: $primary-color;
   }
   &.btn-primary:hover, &.btn-primary:active, &.btn-primary:focus {
     background: $primary-color-dark !important;
+    border-color: $primary-color-dark !important;
   }
   &.btn-secondary {
     background: $secondary-color;
+    border-color: $secondary-color;
   }
   &.btn-secondary:hover, &.btn-secondary:active, &.btn-secondary:focus {
     background: $secondary-color-dark !important;
+    border-color: $secondary-color-dark !important;
   }
 }
 
 .center {
   text-align: center;
+}
+.right {
+  text-align: right;
 }
 
 .register-page, .login-page {
@@ -46,4 +53,43 @@ button {
       width: 194px;
     }
   }
+}
+
+.container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  border-color: $primary-color;
+  background-color: $primary-color;
+}
+
+.page {
+  height: calc(100% + -68px);
+  position: relative;
+  h1 {
+    margin-top: 15px;
+    margin-bottom: 30px;
+  }
+}
+
+.flt-r {
+  float: right
+}
+.flt-l {
+  float: left;
+}
+
+i {
+  &.fas, &.far {
+    font-weight: bold;
+  }
+}
+
+textarea {
+  width: 100%;
+  border-radius: 4px;
+  border-color: rgba(0, 0, 0, 0.2);
+  padding: 10px 15px;
 }

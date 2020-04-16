@@ -13,7 +13,7 @@ export default new Vuex.Store({
   state: {
     user: null,
     isLogged: false,
-    challengePath: null,
+    challengePath: null
   },
   plugins: [vuexLocal.plugin],
   mutations: {
@@ -39,10 +39,10 @@ export default new Vuex.Store({
       commit("setUser", user);
     },
     setChallengePath({ commit }, challengePath) {
-      commit('setChallengePath', challengePath);
+      commit("setChallengePath", challengePath);
     },
     setActiveChallenge({ commit }, activeChallenge) {
-      commit('setActiveChallenge', activeChallenge);
+      commit("setActiveChallenge", activeChallenge);
     }
   }
 });

@@ -1,7 +1,7 @@
 <template lang="pug">
   #app
-    Navbar#nav(v-if="this.$store.state.isLogged")
     router-view
+    Navbar#nav(v-if="this.$store.state.isLogged")
 </template>
 
 <script>

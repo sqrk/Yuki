@@ -17,10 +17,18 @@ module.exports = {
       }
 
       // Get the challenges under the current difficulty
-      const currentDifficulty = pathDoc.data().currentDifficulty;
+      const { currentDifficulty } = pathDoc.data();
+
+      // All challenges completed
+      if (currentDifficulty === -1) {
+        return res.status(202).send(null);
+      }
+
       const challengesIDs = pathDoc.data().path[currentDifficulty].challenges;
       let challenges = [];
       let processed = 0;
+
+
 
       // Get completed challenges under our user to only display the uncompleted ones
       admin.firestore().collection('users').doc(uid).get()
@@ -40,7 +48,10 @@ module.exports = {
                   })
                 }
 
-                if (!(challengeDoc.data().id in completedChallenges)) {
+
+                if (!completedChallenges.includes(challengeDoc.data().id )) {
+                  console.log(challengeDoc.data().id);
+                  console.log(completedChallenges);
                   challenges.push(challengeDoc.data());
                 }
 
@@ -51,7 +62,7 @@ module.exports = {
                 }
               })
               .catch((error) => {
-                console.log('Failed to fetch challenges from db: ', error.message);
+                console.log('ChallengeController: Failed to fetch challenges from db: ', error.message);
                 return res.status(502).send({
                   error: 'Something wrong happened with our servers.',
                 })

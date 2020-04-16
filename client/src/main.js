@@ -10,6 +10,7 @@ import "bootstrap";
 import { sync } from "vuex-router-sync";
 import store from "./store/store";
 import "./assets/css/styles.scss";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 Vue.config.productionTip = false;
 

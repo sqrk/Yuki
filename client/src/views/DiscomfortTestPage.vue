@@ -1,7 +1,7 @@
 <template lang="pug">
-  .discomfort-test-page
+  .discomfort-test-page.page
     .container
-      h1.center Discomfort Test Page
+      h1.center Discomfort Test
       h4 How comfortable are you with each of these situations?
       form(@submit.prevent="computeMap")
         .form-group
@@ -15,7 +15,7 @@
                   v-model = "map.types.strangers",
                   name='strangers')
                 label.custom-control-label(for='strangers1') Easy
-            .col-4
+            .col-4.center
               .custom-control.custom-radio.custom-control-inline
                 input#strangers2.custom-control-input(
                   type='radio',
@@ -23,7 +23,7 @@
                   v-model = "map.types.strangers",
                   name='strangers')
                 label.custom-control-label(for='strangers2') Tricky
-            .col-4
+            .col-4.right
               .custom-control.custom-radio.custom-control-inline
                 input#strangers3.custom-control-input(
                   type='radio',
@@ -43,7 +43,7 @@
                   v-model = "map.types.bothering",
                   name='bothering')
                 label.custom-control-label(for='bothering1') Easy
-            .col-4
+            .col-4.center
               .custom-control.custom-radio.custom-control-inline
                 input#bothering2.custom-control-input(
                   type='radio',
@@ -51,7 +51,7 @@
                   v-model = "map.types.bothering",
                   name='bothering')
                 label.custom-control-label(for='bothering2') Tricky
-            .col-4
+            .col-4.right
               .custom-control.custom-radio.custom-control-inline
                 input#bothering3.custom-control-input(
                   type='radio',
@@ -71,7 +71,7 @@
                   v-model = "map.types.presenting",
                   name='presenting')
                 label.custom-control-label(for='presenting1') Easy
-            .col-4
+            .col-4.center
               .custom-control.custom-radio.custom-control-inline
                 input#presenting2.custom-control-input(
                   type='radio',
@@ -79,7 +79,7 @@
                   v-model = "map.types.presenting",
                   name='presenting')
                 label.custom-control-label(for='presenting2') Tricky
-            .col-4
+            .col-4.right
               .custom-control.custom-radio.custom-control-inline
                 input#presenting3.custom-control-input(
                   type='radio',
@@ -89,8 +89,8 @@
                 label.custom-control-label(for='presenting3') Hard
 
         .error {{ this.error }}
-        .row
-          button.btn-primary(type="submit") Done
+        //.row
+        button.btn-primary(type="submit") Done
 
 </template>
 
@@ -132,9 +132,19 @@ export default {
 
 <style scoped lang="scss">
 form button {
-  margin: 0 auto;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .error {
   color: red;
+}
+h1 {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+h4 {
+  margin-bottom: 2rem;
 }
 </style>
