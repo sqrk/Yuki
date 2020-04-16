@@ -5,7 +5,7 @@
         router-link(:to='{ name: "feed_path" }').nav-link
           i.fas.fa-stream
       li.nav-item
-        router-link(:to='{ name: "register_path" }').nav-link
+        router-link(:to='{ name: "more_help_path" }').nav-link
           i.far.fa-life-ring
       li.nav-item
         router-link(:to='{ name: "profile_path" }').nav-link

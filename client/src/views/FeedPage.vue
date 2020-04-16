@@ -202,7 +202,7 @@ export default {
   }
 }
 .testimonials {
-  margin-bottom: 80px;
+  margin-bottom: 20px;
   .testimonial {
     .card {
       background: #f8f9f9;
