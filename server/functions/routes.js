@@ -23,6 +23,8 @@ module.exports = {
     app.post('/challenges/take', ChallengeController.take);
 
     app.get('/testimonials/:id', TestimonialService.fetch);
+    app.post('/testimonials/new', TestimonialService.complete);
+    app.post('/testimonials/comments/new', TestimonialService.addComment);
 
     app.get('/profile', isAuthenticated);
 

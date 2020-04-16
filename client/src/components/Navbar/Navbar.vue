@@ -22,7 +22,7 @@ export default {
 @import "../../assets/css/variables";
 
 nav {
-  background: $secondary-color;
+  background: $primary-color;
   ul {
     display: contents;
   }

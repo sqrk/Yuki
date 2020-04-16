@@ -20,15 +20,19 @@ button {
   border: none;
   &.btn-primary {
     background: $primary-color;
+    border-color: $primary-color;
   }
   &.btn-primary:hover, &.btn-primary:active, &.btn-primary:focus {
     background: $primary-color-dark !important;
+    border-color: $primary-color-dark !important;
   }
   &.btn-secondary {
     background: $secondary-color;
+    border-color: $secondary-color;
   }
   &.btn-secondary:hover, &.btn-secondary:active, &.btn-secondary:focus {
     background: $secondary-color-dark !important;
+    border-color: $secondary-color-dark !important;
   }
 }
 
@@ -81,4 +85,11 @@ i {
   &.fas, &.far {
     font-weight: bold;
   }
+}
+
+textarea {
+  width: 100%;
+  border-radius: 4px;
+  border-color: rgba(0, 0, 0, 0.2);
+  padding: 10px 15px;
 }
