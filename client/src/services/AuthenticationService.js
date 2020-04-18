@@ -20,7 +20,12 @@ export default {
       return "Couldn't sign in"; //TODO Fix
     }
   },
-  logout() {
-    return Api().post("logout");
+  async logout() {
+    try {
+      await fb.auth().signOut();
+    } catch (error) {
+      console.log(error);
+      return "We couldn't log you out."
+    }
   }
 };

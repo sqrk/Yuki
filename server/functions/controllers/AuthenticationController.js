@@ -1,5 +1,4 @@
 const admin = require('firebase-admin');
-const { fb } = require('../firebase');
 // TODO Change uids to usernames
 module.exports = {
   async register(req, res) {
@@ -107,18 +106,6 @@ module.exports = {
           error: 'The username and password you provided do not match',
         });
       }
-    }
-  },
-
-  async logout(req, res) { // TODO Fix
-    try {
-      await fb.auth().signOut();
-
-      return res.sendStatus(200);
-    } catch (error) {
-      return res.status(502).send({
-        error: `Something went wrong: ${error}`,
-      });
     }
   },
 };

@@ -10,7 +10,6 @@ module.exports = {
   routes(app) {
     app.post('/register', AuthenticationController.register);
     app.post('/login', AuthenticationController.login);
-    app.post('/logout', AuthenticationController.logout);
 
     app.post('/discomfort-test',
       //isAuthenticated,
