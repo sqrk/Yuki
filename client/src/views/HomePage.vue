@@ -1,6 +1,6 @@
 <template lang="pug">
   .homepage.center
-    label.brand Yuki
+    label.brand Yūki
     .buttons
       router-link(:to='{name: "login_path"}' tag="button").btn-primary Login
       br

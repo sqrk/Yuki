@@ -6,19 +6,19 @@
         .score.bg.btn-primary {{ user.score }}
         i.edit.far.fa-edit
         .row
-          .col-6
+          .col-5
             label Username:
-          .col-6
+          .col-7
             label {{ user.username }}
         .row
-          .col-6
+          .col-5
             label Email:
-          .col-6
+          .col-7
             label {{ user.email }}
         .row
-          .col-6
+          .col-5
             label Password:
-          .col-6
+          .col-7
             label *******
       button.btn-danger.logout(@click="logout") Logout
       .error {{ this.error }}

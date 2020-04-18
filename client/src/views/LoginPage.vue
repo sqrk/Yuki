@@ -41,10 +41,7 @@ export default {
   methods: {
     async login() {
       try {
-        const response = await AuthenticationService.login({
-          email: this.email,
-          password: this.password //TODO is this ok????
-        });
+        const response = await AuthenticationService.login(this.email, this.password);
 
         await this.$store.dispatch("setLogged", true);
         await this.$store.dispatch("setUser", response.data);
