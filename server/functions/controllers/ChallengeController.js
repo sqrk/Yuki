@@ -10,7 +10,7 @@ module.exports = {
           .get();
 
       if (!pathDoc.exists) {
-        console.log('challengePath not found.');
+        console.log('ChallengeController: challengePath not found.');
         return res.status(404).send({
           error: 'No path has been found. Have you taken the test?',
         })
@@ -42,7 +42,7 @@ module.exports = {
 
                 // Throw error if no challenges are found
                 if (!challengeDoc.exists) {
-                  console.log('Challenge not found although challengePath exists');
+                  console.log('ChallengeController: Challenge not found although challengePath exists');
                   return res.status(404).send({
                     error: 'No challenge was found.',
                   })
@@ -71,14 +71,14 @@ module.exports = {
 
         })
         .catch(error => {
-          console.log('Failed to fetch user: ', error.message);
+          console.log('ChallengeController: Failed to fetch user: ', error.message);
           return res.status(502).send({
             error: 'Something wrong happened with our servers.'
           })
         });
 
     } catch (error) {
-      console.log('Failed to fetch paths from db');
+      console.log('ChallengeController: Failed to fetch paths from db', error.message);
       return res.status(502).send({
         error: 'Something wrong happened with our servers.',
       })

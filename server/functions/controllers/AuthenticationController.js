@@ -93,19 +93,9 @@ module.exports = {
         }
 
     } catch (error) { // Unsuccessful authentication
-      if (error.code === 'auth/invalid-email') {
-        return res.status(400).send({
-          error: error.message,
-        });
-      } else if (error.code === 'auth/user-disabled') {
-        return res.status(403).send({
-          error: error.message,
-        });
-      } else {
-        return res.status(403).send({
-          error: 'The username and password you provided do not match',
-        });
-      }
+      return res.status(403).send({
+        error: 'The username and password you provided do not match',
+      });
     }
   },
 };

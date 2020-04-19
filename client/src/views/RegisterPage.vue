@@ -59,6 +59,7 @@ export default {
   methods: {
     async register() {
       try {
+        this.error = null; // Re-initialize
         if (this.password !== this.passwordConf) {
           this.error = "Your passwords do not match.";
           return;

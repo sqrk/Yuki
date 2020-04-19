@@ -41,13 +41,20 @@ export default {
   methods: {
     async login() {
       try {
-        const response = await AuthenticationService.login(this.email, this.password);
+        const response = await AuthenticationService.login(
+          this.email,
+          this.password
+        );
 
         await this.$store.dispatch("setLogged", true);
         await this.$store.dispatch("setUser", response.data);
         await this.$router.push({ name: "feed_path" });
       } catch (error) {
-        this.error = error.response.data.error;
+        if (Object.prototype.hasOwnProperty.call(error, "response")) {
+          this.error = error.response.data.error;
+        } else {
+          this.error = error;
+        }
       }
     }
   }

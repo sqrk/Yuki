@@ -9,15 +9,17 @@ export default {
     try {
       await fb.auth().signInWithEmailAndPassword(email, password);
 
-      try {
-        const token = await fb.auth().currentUser.getIdToken();
+      const token = await fb.auth().currentUser.getIdToken();
 
-        return Api().post("/login", {token});
-      } catch (error) {
-        return "Couldn't get token"; //TODO Fix
-      }
+      return Api().post("/login", {token});
+
     } catch (error) {
-      return "Couldn't sign in"; //TODO Fix
+      if (error.code === "auth/invalid-email") {
+        throw "Please enter a valid email address.";
+      } else if (error.code === "auth/user-not-found" || error.code === "auth/wrong-password") {
+        throw "Your email address and password do not match";
+      }
+      throw "There has been a problem signing you in.";
     }
   },
   async logout() {
