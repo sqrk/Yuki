@@ -32,7 +32,7 @@ const routes = [
     path: "/discomfort-test",
     name: "discomfort_test_path",
     component: DiscomfortTestPage,
-   meta: { requiresAuth: true }
+    meta: { requiresAuth: true }
   },
   {
     path: "/profile",
@@ -65,11 +65,10 @@ router.beforeEach((to, from, next) => {
   const currentUser = store.state.user;
 
   //Check if path requires auth and user not logged in
-  if ( requiresAuth && !currentUser) {
-    console.log(currentUser);
-    next({ name: "root_path" })
+  if (requiresAuth && !currentUser) {
+    next({ name: "root_path" });
   } else {
-    next()
+    next();
   }
 });
 

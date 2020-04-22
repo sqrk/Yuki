@@ -61,7 +61,7 @@
 // TODO ^
 export default {
   name: "MoreHelpPage"
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -73,7 +73,8 @@ img {
   width: 100%;
   margin-bottom: 5px;
 }
-.title, .author {
+.title,
+.author {
   font-size: 14px;
   margin-bottom: 2px;
 }

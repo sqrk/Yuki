@@ -3,6 +3,7 @@ const admin = require('firebase-admin');
 module.exports = {
   async isAuthenticated(req, res, next) {
     const { authorization } = req.headers;
+    console.log(authorization);
     if (!authorization || !authorization.startsWith('Bearer ')) { // Bearer authentication scheme
       return res.status(401).send({
         error: 'Unauthorized',
@@ -10,6 +11,8 @@ module.exports = {
     }
     const split = authorization.split(' ');
     const token = split[1];
+
+    console.log(token);
 
     try {
       // Token verification by Firebase

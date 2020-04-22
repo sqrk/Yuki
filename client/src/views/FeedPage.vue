@@ -145,7 +145,7 @@ export default {
           );
           this.activeChallengeID = "";
           this.activeChallengeData = "";
-          await $('#complete').modal('hide');
+          await $("#complete").modal("hide");
           await this.fetch();
           this.$store.commit("setActiveChallenge", "");
           this.$store.commit("increaseScore");
@@ -163,7 +163,6 @@ export default {
         this.activeChallengeData = "";
         await this.$store.dispatch("setActiveChallenge", "");
         await this.fetch();
-
       } catch (error) {
         this.error = error;
       }
@@ -171,7 +170,11 @@ export default {
 
     async addComment(i, testimonial) {
       try {
-        await TestimonialService.addComment(this.newComment[i], testimonial, this.$store.state.user.username);
+        await TestimonialService.addComment(
+          this.newComment[i],
+          testimonial,
+          this.$store.state.user.username
+        );
         await this.fetch();
         this.newComment[i] = null;
       } catch (error) {
@@ -180,7 +183,6 @@ export default {
     }
   }
 };
-
 </script>
 
 <style scoped lang="scss">
