@@ -1,6 +1,5 @@
 const admin = require('firebase-admin');
-const { fb } = require('../firebase');
-// TODO Change uids to usernames
+
 module.exports = {
   async register(req, res) {
     try {
@@ -67,54 +66,35 @@ module.exports = {
 
   async login(req, res) {
     try {
-      // Authenticating user
-      const { email, password } = req.body;
-      const { user } = await fb.auth().signInWithEmailAndPassword(email, password);
 
-      try {
-        // Getting user data from db
-        const doc = await admin.firestore().collection('users').doc(user.uid)
-          .get();
+      const { token } = req.body;
 
-        if (doc.exists) {
-          return res.send(doc.data());
-        } else {
-          return res.status(404).send({
-            error: 'Document not found',
+      const decodedToken = await admin.auth().verifyIdToken(token);
+
+        try {
+          // Getting user data from db
+          const doc = await admin.firestore().collection('users').doc(decodedToken.uid)
+            .get();
+
+          console.log(doc);
+
+          if (doc.exists) {
+            return res.send(doc.data());
+          } else {
+            return res.status(404).send({
+              error: 'Document not found',
+            });
+          }
+        }
+        catch (error) { // Error with db
+          return res.status(502).send({
+            error: `Error fetching document: ${error}`,
           });
         }
-      }
-      catch (error) { // Error with db
-        return res.status(502).send({
-          error: `Error fetching document: ${error}`,
-        });
-      }
 
     } catch (error) { // Unsuccessful authentication
-      if (error.code === 'auth/invalid-email') {
-        return res.status(400).send({
-          error: error.message,
-        });
-      } else if (error.code === 'auth/user-disabled') {
-        return res.status(403).send({
-          error: error.message,
-        });
-      } else {
-        return res.status(403).send({
-          error: 'The username and password you provided do not match',
-        });
-      }
-    }
-  },
-
-  async logout(req, res) { // TODO Fix
-    try {
-      await fb.auth().signOut();
-
-      return res.sendStatus(200);
-    } catch (error) {
-      return res.status(502).send({
-        error: `Something went wrong: ${error}`,
+      return res.status(403).send({
+        error: 'The username and password you provided do not match',
       });
     }
   },

@@ -10,7 +10,7 @@ module.exports = {
           .get();
 
       if (!pathDoc.exists) {
-        console.log('challengePath not found.');
+        console.log('ChallengeController: challengePath not found.');
         return res.status(404).send({
           error: 'No path has been found. Have you taken the test?',
         })
@@ -21,14 +21,12 @@ module.exports = {
 
       // All challenges completed
       if (currentDifficulty === -1) {
-        return res.status(202).send(null);
+        return res.status(200).send(null);
       }
 
       const challengesIDs = pathDoc.data().path[currentDifficulty].challenges;
       let challenges = [];
       let processed = 0;
-
-
 
       // Get completed challenges under our user to only display the uncompleted ones
       admin.firestore().collection('users').doc(uid).get()
@@ -42,16 +40,13 @@ module.exports = {
 
                 // Throw error if no challenges are found
                 if (!challengeDoc.exists) {
-                  console.log('Challenge not found although challengePath exists');
+                  console.log('ChallengeController: Challenge not found although challengePath exists');
                   return res.status(404).send({
                     error: 'No challenge was found.',
                   })
                 }
 
-
                 if (!completedChallenges.includes(challengeDoc.data().id )) {
-                  console.log(challengeDoc.data().id);
-                  console.log(completedChallenges);
                   challenges.push(challengeDoc.data());
                 }
 
@@ -71,14 +66,14 @@ module.exports = {
 
         })
         .catch(error => {
-          console.log('Failed to fetch user: ', error.message);
+          console.log('ChallengeController: Failed to fetch user: ', error.message);
           return res.status(502).send({
             error: 'Something wrong happened with our servers.'
           })
         });
 
     } catch (error) {
-      console.log('Failed to fetch paths from db');
+      console.log('ChallengeController: Failed to fetch paths from db', error.message);
       return res.status(502).send({
         error: 'Something wrong happened with our servers.',
       })
@@ -96,7 +91,7 @@ module.exports = {
 
       return res.sendStatus(200);
     } catch (error) {
-      console.log(error.message);
+      console.log("ChallengeController: Failed to update activeChallenge:", error.message);
       return res.status(502).send({
         error: "Something wrong happened with our servers."
       })
@@ -121,6 +116,5 @@ module.exports = {
           error: "Something wrong happened with our servers."
         })
       })
-
   }
 };

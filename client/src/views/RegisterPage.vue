@@ -1,5 +1,5 @@
 <template lang="pug">
-  .register-page.center
+  .register-page.center.page
     .container
       h1 Register
       form(@submit.prevent="register")
@@ -39,7 +39,6 @@
 </template>
 
 <script>
-//TODO Add autocomplete to inputs, check confirm password
 import AuthenticationService from "../services/AuthenticationService";
 
 export default {
@@ -59,6 +58,7 @@ export default {
   methods: {
     async register() {
       try {
+        this.error = null; // Re-initialize
         if (this.password !== this.passwordConf) {
           this.error = "Your passwords do not match.";
           return;
@@ -78,19 +78,28 @@ export default {
     }
   }
 };
+//TODO Add back buttons here and login to go back to homepage
+//TODO Handle case where use logs out before completing the test and logging back in (sent to the feed w/o challengePath -> error)
 </script>
 
 <style scoped lang="scss">
-form {
-  label {
-    display: block;
-  }
-  input {
-    margin: 0 auto;
-    width: 194px;
-  }
-  .error {
-    color: red;
+.page {
+  height: 100%;
+  form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    label {
+      display: block;
+    }
+    input {
+      margin: 0 auto;
+      width: 194px;
+    }
+    .error {
+      color: red;
+    }
   }
 }
 </style>

@@ -12,8 +12,7 @@ export default new Vuex.Store({
   strict: true, // Can't change the state unless through action/mutation
   state: {
     user: null,
-    isLogged: false,
-    challengePath: null
+    isLogged: false
   },
   plugins: [vuexLocal.plugin],
   mutations: {
@@ -24,11 +23,11 @@ export default new Vuex.Store({
     setUser(state, user) {
       state.user = user;
     },
-    setChallengePath(state, challengePath) {
-      state.challengePath = challengePath;
-    },
     setActiveChallenge(state, activeChallenge) {
       state.user.activeChallenge = activeChallenge;
+    },
+    increaseScore(state) {
+      state.user.score += 200;
     }
   },
   actions: {
@@ -37,9 +36,6 @@ export default new Vuex.Store({
     },
     setUser({ commit }, user) {
       commit("setUser", user);
-    },
-    setChallengePath({ commit }, challengePath) {
-      commit("setChallengePath", challengePath);
     },
     setActiveChallenge({ commit }, activeChallenge) {
       commit("setActiveChallenge", activeChallenge);
