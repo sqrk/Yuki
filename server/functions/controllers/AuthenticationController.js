@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-// TODO Change uids to usernames
+
 module.exports = {
   async register(req, res) {
     try {

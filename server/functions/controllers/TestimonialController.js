@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-const uuid = require('uuid/v4');
+const { v4: uuid } = require('uuid');
 
 module.exports = {
   async fetch(req, res) {
@@ -29,16 +29,19 @@ module.exports = {
               let testimonial = testimonialDoc.data();
               let date = testimonial.date.toDate();
 
-              let strDate = date.getHours().toString().padStart(2, "0") + ':' + date.getMinutes().toString().padStart(2, "0") + '  ' + date.getDay()
-                + '/' + date.getMonth() + '/' + date.getFullYear();
+              let strDate = date.getHours().toString().padStart(2, "0") + ':' +
+                date.getMinutes().toString().padStart(2, "0") + '  ' + date.getDate()
+                + '/' + ( date.getMonth() + 1 )  + '/' + date.getFullYear();
 
               testimonial.date = strDate;
 
               testimonial.comments.forEach(comment => {
                 date = comment.date.toDate();
+                console.log(date, date.getMonth());
 
-                strDate = date.getHours().toString().padStart(2, "0") + ':' + date.getMinutes().toString().padStart(2, "0") + '  ' + date.getDay()
-                  + '/' + date.getMonth() + '/' + date.getFullYear();
+                strDate = date.getHours().toString().padStart(2, "0") + ':' +
+                  date.getMinutes().toString().padStart(2, "0") + '  ' + date.getDate()
+                  + '/' + ( date.getMonth() + 1 )  + '/' + date.getFullYear();
 
                 comment.date = strDate;
               });
@@ -108,7 +111,7 @@ module.exports = {
 
                   // Case where we're already at the last round
                   if (currentDifficulty === maxDifficulty) {
-                    challengePath.currentDifficulty = -1; // TODO Handle at the level of the view
+                    challengePath.currentDifficulty = -1;
                   } else {
                     // Case where we should go to the next round
                     for (let i = currentDifficulty + 1; i <= maxDifficulty; i++) {
@@ -134,7 +137,8 @@ module.exports = {
                       .collection('users')
                       .doc(uid)
                       .update({
-                        activeChallenge: ""
+                        activeChallenge: "",
+                        score: admin.firestore.FieldValue.increment(200)
                       })
                       .then(() => {
                         return res.sendStatus(200);

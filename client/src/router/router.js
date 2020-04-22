@@ -1,5 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+//import { fb } from "../firebase";
+import store from "../store/store";
 import HomePage from "../views/HomePage.vue";
 import LoginPage from "../views/LoginPage";
 import RegisterPage from "../views/RegisterPage";
@@ -30,7 +32,7 @@ const routes = [
     path: "/discomfort-test",
     name: "discomfort_test_path",
     component: DiscomfortTestPage,
-    meta: { requiresAuth: true }
+   meta: { requiresAuth: true }
   },
   {
     path: "/profile",
@@ -58,17 +60,17 @@ const router = new VueRouter({
   routes
 });
 
-// TODO implement this
-/*router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-  // const currentUser = firebase.auth().currentUser;
+  const currentUser = store.state.user;
 
   //Check if path requires auth and user not logged in
   if ( requiresAuth && !currentUser) {
+    console.log(currentUser);
     next({ name: "root_path" })
   } else {
     next()
   }
-});*/
+});
 
 export default router;

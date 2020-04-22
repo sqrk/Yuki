@@ -43,14 +43,16 @@
                       .content {{ testimonial.content }}
                     .col-2
                       .row
-                      .score
+                      //.score
                         .value.flt-r {{ testimonial.score }}
                         .arrows
                           //i.far.fa-sort-up
                           //i.far.fa-sort-down
               form(@submit.prevent="addComment(i, testimonial.uid)")
-                input(v-model="newComment[i]" type="text" placeholder="Enter a comment")
-                button(type="submit") Submit
+                .field
+                  input(v-model="newComment[i]" type="text" placeholder="Enter a comment")
+                  button.submit.btn-primary(type="submit")
+                    i.fas.fa-paper-plane
               .comments
                 .row
                   .col-11.offset-1
@@ -59,7 +61,7 @@
                         label.author {{ comment.user }}
                         label.date.flt-r {{ comment.date }}
                       .content {{ comment.content }}
-                      .score.flt-r {{ comment.score }}
+                      //.score.flt-r {{ comment.score }}
       #complete.modal.fade(tabindex='-1', role='dialog', aria-hidden='true' ref="completeModal")
         .modal-dialog(role='document')
           .modal-content
@@ -145,7 +147,8 @@ export default {
           this.activeChallengeData = "";
           await $('#complete').modal('hide');
           await this.fetch();
-          await this.$store.dispatch("setActiveChallenge", "");
+          this.$store.commit("setActiveChallenge", "");
+          this.$store.commit("increaseScore");
           this.newTestimonial = null;
         }
       } catch (error) {
@@ -178,7 +181,6 @@ export default {
   }
 };
 
-//TODO Handle feed 404 when there are no challenges to be displayed
 </script>
 
 <style scoped lang="scss">
@@ -192,6 +194,8 @@ export default {
   button {
     display: block;
     margin: 0 auto;
+    max-width: 49%;
+    font-size: 20px;
     &.inline {
       display: inline-block;
     }
@@ -201,11 +205,35 @@ export default {
     }
   }
 }
+.submit {
+  width: 55px;
+  padding: 6px;
+  border: 1px solid $primary-color;
+}
 .testimonials {
   margin-bottom: 20px;
   .testimonial {
+    margin-bottom: 15px;
+    form {
+      .field {
+        width: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 0 0 4px 4px;
+        border-top: none;
+        input {
+          border: none;
+          padding: 10px;
+          width: calc(100% + -55px);
+          border-radius: 4px;
+        }
+        button {
+          border-radius: 4px;
+        }
+      }
+    }
     .card {
       background: #f8f9f9;
+      border-radius: 4px 4px 0 0;
 
       .card-body {
         padding: 10px;

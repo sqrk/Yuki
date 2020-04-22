@@ -115,8 +115,7 @@ export default {
   methods: {
     async computeMap() {
       try {
-        const challengePath = await DiscomfortTestService.computeMap(this.map);
-        await this.$store.dispatch("setChallengePath", challengePath); // TODO Probably not needed and better not put in store
+        await DiscomfortTestService.computeMap(this.map);
         await this.$router.push({ name: "feed_path" });
       } catch (error) {
         this.error = error;
@@ -127,7 +126,6 @@ export default {
 
 // TODO Prevent access unless sign up
 // TODO "automate" the test (no hardcoded questions)
-// TODO radio values, numbers not strings
 </script>
 
 <style scoped lang="scss">

@@ -67,6 +67,7 @@ button, .bg {
 
 .page {
   margin-bottom: 69px;
+  min-height: calc(100% + -69px);
   position: relative;
   h1 {
     margin-top: 15px;

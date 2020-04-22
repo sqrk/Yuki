@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const { routes } = require('./routes');
 
 admin.initializeApp({
-  credential: admin.credential.applicationDefault(), // TODO WHAT
+  credential: admin.credential.applicationDefault(),
   databaseURL: "https://yuki-a30e7.firebaseio.com"
 });
 

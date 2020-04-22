@@ -90,5 +90,3 @@ module.exports = {
 
   }
 };
-
-// TODO Prevent from taking test more than once (just check if corresponding challengePath exists already)

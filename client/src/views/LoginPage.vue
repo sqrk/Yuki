@@ -1,5 +1,5 @@
 <template lang="pug">
-  .login-page.center
+  .login-page.center.page
     .container
       h1 Login
       form(@submit.prevent="login")
@@ -48,6 +48,7 @@ export default {
 
         await this.$store.dispatch("setLogged", true);
         await this.$store.dispatch("setUser", response.data);
+
         await this.$router.push({ name: "feed_path" });
       } catch (error) {
         if (Object.prototype.hasOwnProperty.call(error, "response")) {
@@ -59,12 +60,17 @@ export default {
     }
   }
 };
-//TODO Add autocomplete to inputs
 //TODO Implement errors (UI)
 </script>
 
 <style scoped>
 .error {
   color: red;
+}
+form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 </style>

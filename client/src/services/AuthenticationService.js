@@ -13,6 +13,7 @@ export default {
 
       return Api().post("/login", {token});
 
+
     } catch (error) {
       if (error.code === "auth/invalid-email") {
         throw "Please enter a valid email address.";

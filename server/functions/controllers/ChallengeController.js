@@ -21,14 +21,12 @@ module.exports = {
 
       // All challenges completed
       if (currentDifficulty === -1) {
-        return res.status(202).send(null);
+        return res.status(200).send(null);
       }
 
       const challengesIDs = pathDoc.data().path[currentDifficulty].challenges;
       let challenges = [];
       let processed = 0;
-
-
 
       // Get completed challenges under our user to only display the uncompleted ones
       admin.firestore().collection('users').doc(uid).get()
@@ -48,10 +46,7 @@ module.exports = {
                   })
                 }
 
-
                 if (!completedChallenges.includes(challengeDoc.data().id )) {
-                  console.log(challengeDoc.data().id);
-                  console.log(completedChallenges);
                   challenges.push(challengeDoc.data());
                 }
 
@@ -96,7 +91,7 @@ module.exports = {
 
       return res.sendStatus(200);
     } catch (error) {
-      console.log(error.message);
+      console.log("ChallengeController: Failed to update activeChallenge:", error.message);
       return res.status(502).send({
         error: "Something wrong happened with our servers."
       })
@@ -121,6 +116,5 @@ module.exports = {
           error: "Something wrong happened with our servers."
         })
       })
-
   }
 };

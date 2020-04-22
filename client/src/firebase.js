@@ -1,6 +1,5 @@
-const firebase = require('firebase');
-
-require('firebase/firestore');
+import firebase from "firebase";
+//import store from "./store/store";
 
 const config = {
   apiKey: 'AIzaSyAMifs7hCXFXMGhYfTZVJoH8h_IE8uh5pQ',
@@ -14,6 +13,13 @@ const config = {
 };
 
 const fb = firebase.initializeApp(config);
-const db = firebase.firestore();
 
-module.exports = { fb, db };
+// firebase.auth().onAuthStateChanged((user) =>{
+//   if(user){
+//     store.dispatch('setUser', user);
+//   }else{
+//     store.dispatch('setUser', null);
+//   }
+// });
+
+export { fb };
