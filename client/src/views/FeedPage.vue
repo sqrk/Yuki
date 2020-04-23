@@ -188,6 +188,19 @@ export default {
 <style scoped lang="scss">
 @import "../assets/css/variables";
 
+@media only screen and (max-width: 403px) {
+  .challenge {
+    button {
+      display: block !important;
+      float: none !important;
+      margin: 0 auto;
+      &.btn-primary {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
 .challenge {
   margin-bottom: 30px;
   .description {
@@ -196,7 +209,6 @@ export default {
   button {
     display: block;
     margin: 0 auto;
-    max-width: 49%;
     font-size: 20px;
     &.inline {
       display: inline-block;
