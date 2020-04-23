@@ -8,7 +8,7 @@ module.exports = {
       navigateFallback: "/index.html",
       runtimeCaching: [
         {
-          urlPattern: new RegExp('^http://localhost:5000/yuki-a30e7/us-central1/api/'), //Add slash?
+          urlPattern: new RegExp('^https://us-central1-yuki-a30e7.cloudfunctions.net/api'), //Add slash?
           handler: "networkFirst",
           options: {
             networkTimeoutSeconds: 20,

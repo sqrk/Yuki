@@ -20,7 +20,7 @@ module.exports = {
 
       console.log("decodedToken", JSON.stringify(decodedToken));
 
-      res.locals = { ...res.locals, uid: decodedToken.uid, role: decodedToken.role, email: decodedToken.email };
+      //res.locals = { ...res.locals, uid: decodedToken.uid, role: decodedToken.role, email: decodedToken.email };
       return next();
 
     } catch (error) {

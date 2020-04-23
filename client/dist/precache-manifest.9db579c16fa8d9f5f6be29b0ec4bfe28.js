@@ -1,7 +1,7 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b37e1f13b677996905c6",
-    "url": "/css/app.81b8a374.css"
+    "revision": "ab5c343d2545d9108b15",
+    "url": "/css/app.a987ec4f.css"
   },
   {
     "revision": "9546fab90ef1dc7608c0",
@@ -84,19 +84,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/video-anxiety.bbee7242.jpg"
   },
   {
-    "revision": "a57514328d38ad18c76c36d828414b0f",
+    "revision": "165f8954839c5803374fa3822c06b8cd",
     "url": "/index.html"
   },
   {
-    "revision": "b37e1f13b677996905c6",
-    "url": "/js/app.cf112061.js"
+    "revision": "ab5c343d2545d9108b15",
+    "url": "/js/app.2c448f79.js"
   },
   {
     "revision": "9546fab90ef1dc7608c0",
     "url": "/js/chunk-vendors.cd75e8b8.js"
   },
   {
-    "revision": "5bda5d621664222ea9d41d3a6af3adb3",
+    "revision": "9ed8673702ee2c407d531b0a69845759",
     "url": "/manifest.json"
   },
   {

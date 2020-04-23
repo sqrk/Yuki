@@ -1,4 +1,5 @@
 const admin = require('firebase-admin');
+/* eslint-disable promise/always-return */
 
 module.exports = {
   async fetch(req, res) {

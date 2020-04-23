@@ -1,3 +1,4 @@
+/* eslint-disable promise/always-return */
 const admin = require('firebase-admin');
 const { v4: uuid } = require('uuid');
 

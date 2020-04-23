@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.d2e131c061442eb714208a8d2ded3dcf.js"
+  "/precache-manifest.9db579c16fa8d9f5f6be29b0ec4bfe28.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "yuki"});
@@ -35,4 +35,4 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/index.html"));
 
-workbox.routing.registerRoute(/^http:\/\/localhost:5000\/yuki-a30e7\/us-central1\/api\//, new workbox.strategies.NetworkFirst({ "cacheName":"api-cache","networkTimeoutSeconds":20, plugins: [new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');
+workbox.routing.registerRoute(/^https:\/\/us-central1-yuki-a30e7.cloudfunctions.net\/api/, new workbox.strategies.NetworkFirst({ "cacheName":"api-cache","networkTimeoutSeconds":20, plugins: [new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');
