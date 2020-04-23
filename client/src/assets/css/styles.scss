@@ -34,6 +34,12 @@ button, .bg {
     background: $secondary-color-dark !important;
     border-color: $secondary-color-dark !important;
   }
+  &.back {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 0 4px 4px;
+  }
 }
 
 .center {

@@ -145,7 +145,7 @@ export default {
           );
           this.activeChallengeID = "";
           this.activeChallengeData = "";
-          await $('#complete').modal('hide');
+          await $("#complete").modal("hide");
           await this.fetch();
           this.$store.commit("setActiveChallenge", "");
           this.$store.commit("increaseScore");
@@ -163,7 +163,6 @@ export default {
         this.activeChallengeData = "";
         await this.$store.dispatch("setActiveChallenge", "");
         await this.fetch();
-
       } catch (error) {
         this.error = error;
       }
@@ -171,7 +170,11 @@ export default {
 
     async addComment(i, testimonial) {
       try {
-        await TestimonialService.addComment(this.newComment[i], testimonial, this.$store.state.user.username);
+        await TestimonialService.addComment(
+          this.newComment[i],
+          testimonial,
+          this.$store.state.user.username
+        );
         await this.fetch();
         this.newComment[i] = null;
       } catch (error) {
@@ -180,11 +183,23 @@ export default {
     }
   }
 };
-
 </script>
 
 <style scoped lang="scss">
 @import "../assets/css/variables";
+
+@media only screen and (max-width: 403px) {
+  .challenge {
+    button {
+      display: block !important;
+      float: none !important;
+      margin: 0 auto;
+      &.btn-primary {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
 
 .challenge {
   margin-bottom: 30px;
@@ -194,7 +209,6 @@ export default {
   button {
     display: block;
     margin: 0 auto;
-    max-width: 49%;
     font-size: 20px;
     &.inline {
       display: inline-block;

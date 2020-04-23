@@ -1,6 +1,8 @@
 <template lang="pug">
   .register-page.center.page
     .container
+      router-link(:to='{name: "root_path"}' tag="button").btn-primary.back
+        i.fas.fa-chevron-left
       h1 Register
       form(@submit.prevent="register")
         .form-group
@@ -78,7 +80,6 @@ export default {
     }
   }
 };
-//TODO Add back buttons here and login to go back to homepage
 //TODO Handle case where use logs out before completing the test and logging back in (sent to the feed w/o challengePath -> error)
 </script>
 
