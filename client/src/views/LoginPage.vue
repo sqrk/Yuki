@@ -1,6 +1,8 @@
 <template lang="pug">
   .login-page.center.page
     .container
+      router-link(:to='{name: "root_path"}' tag="button").btn-primary.back
+        i.fas.fa-chevron-left
       h1 Login
       form(@submit.prevent="login")
         .form-group
@@ -73,4 +75,5 @@ form {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 </style>
